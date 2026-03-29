@@ -74,12 +74,13 @@ class DetectionTrainer(Trainer):
         inputs,
         prediction_loss_only,
         ignore_keys=None,
+        num_items_in_batch=None,
     ):
         """
         预测步骤 - 返回 logits 用于评估
         """
         with torch.no_grad():
-            loss, outputs_dict = self.compute_loss(model, inputs, return_outputs=True, num_items_in_batch=None)
+            loss, outputs_dict = self.compute_loss(model, inputs, return_outputs=True, num_items_in_batch=num_items_in_batch)
             logits = outputs_dict["logits"]
 
         if prediction_loss_only:
@@ -121,12 +122,13 @@ class RewritingTrainer(Trainer):
         inputs,
         prediction_loss_only,
         ignore_keys=None,
+        num_items_in_batch=None,
     ):
         """
         预测步骤 - 返回生成的文本用于评估
         """
         with torch.no_grad():
-            loss, outputs = self.compute_loss(model, inputs, return_outputs=True)
+            loss, outputs = self.compute_loss(model, inputs, return_outputs=True, num_items_in_batch=num_items_in_batch)
         
         if prediction_loss_only:
             return (loss, None, None)

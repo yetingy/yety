@@ -19,7 +19,7 @@ class TrainingConfig:
     lr_scheduler_type: str = "cosine"
     warmup_ratio: float = 0.1
     weight_decay: float = 0.01
-    fp16: bool = False
+    fp16: bool = True
     logging_steps: int = 10
     save_steps: int = 500
     eval_steps: int = 500

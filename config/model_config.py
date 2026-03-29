@@ -22,7 +22,7 @@ class ModelConfig:
 
     # 量化配置
     load_in_4bit: bool = True
-    bnb_4bit_compute_dtype: str = "bfloat16"
+    bnb_4bit_compute_dtype: str = "float16"
     bnb_4bit_quant_type: str = "nf4"
 
     # 检测任务 LoRA 配置
